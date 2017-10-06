@@ -17,6 +17,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             @forelse($posts as $post)
+<<<<<<< HEAD
                                 <h4>Title: {{$post->title}}</h4>
 
                                 <p>{{$post->description}}</p>
@@ -29,6 +30,20 @@
                                 <button class="btn btn-danger" disabled="disabled">Sem dados</button>
                             @endforelse
                             
+=======
+                                @can('view_post',$post)
+                                    <p>Title: {{$post->title}}</p>
+                                    <p>{{$post->description}}</p>
+                                    <p>Autor: {{$post->user->name}}</p>
+                                    @can('edit_post',$post)
+                                        <a href="{{url('/home/'.$post->id.'/update')}}">Editar</a>
+                                    @endcan
+                                @endcan
+                                <hr>
+                            @empty
+                                <p>No posts</p>
+                            @endforelse
+>>>>>>> test
                         </div>
                     </div>
                 </div>
