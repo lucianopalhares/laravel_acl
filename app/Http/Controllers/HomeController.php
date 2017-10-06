@@ -42,4 +42,19 @@ class HomeController extends Controller
 
         return $post->title;
     }
+    public function rolesPermissions(){
+        $name = auth()->user()->name;
+
+        foreach (auth()->user()->roles as $role) {
+            echo $role->name;
+            echo '<---------->';
+            echo '<br>';
+
+            foreach ($role->permissions as $permission) {
+                echo '<br>';
+                echo $permission->name;
+
+            }
+        }
+    }
 }

@@ -17,11 +17,13 @@
                     <div class="row">
                         <div class="col-md-12">
                             @forelse($posts as $post)
-                                <p>Title: {{$post->title}}</p>
-                                <p>{{$post->description}}</p>
-                                <p>Autor: {{$post->user->name}}</p>
-                                @can('updatePost',$post)
-                                    <a href="{{url('/home/'.$post->id.'/update')}}">Editar</a>
+                                @can('view_post',$post)
+                                    <p>Title: {{$post->title}}</p>
+                                    <p>{{$post->description}}</p>
+                                    <p>Autor: {{$post->user->name}}</p>
+                                    @can('edit_post',$post)
+                                        <a href="{{url('/home/'.$post->id.'/update')}}">Editar</a>
+                                    @endcan
                                 @endcan
                                 <hr>
                             @empty
