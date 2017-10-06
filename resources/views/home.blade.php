@@ -20,7 +20,9 @@
                                 <p>Title: {{$post->title}}</p>
                                 <p>{{$post->description}}</p>
                                 <p>Autor: {{$post->user->name}}</p>
-                                <a href="{{url('/home/'.$post->id.'/update')}}">Editar</a>
+                                @can('updatePost',$post)
+                                    <a href="{{url('/home/'.$post->id.'/update')}}">Editar</a>
+                                @endcan
                                 <hr>
                             @empty
                                 <p>No posts</p>

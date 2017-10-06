@@ -6,6 +6,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
+use Gate;
 
 class HomeController extends Controller
 {
@@ -26,15 +27,18 @@ class HomeController extends Controller
      */
     public function index(Post $post)
     {
-        //$posts = $post->all();
-        $posts = $post->where('user_id',auth()->user()->id)->get();
+        $posts = $post->all();
+        //$posts = $post->where('user_id',auth()->user()->id)->get();
         return view('home',compact('posts'));
     }
     public function update($id){
-        
+
         $post = Post::find($id);
 
-        $this->authorize('update_post',$post);
+        $this->authorize('updatePost',$post);
+
+        if(Gate::denies('updatePost',$post))
+            abort(403,'Nao autorizado');
 
         return $post->title;
     }

@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use App\Post;
-use App\User;
+use App\Policies\PostPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -16,7 +16,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
+        Post::class => PostPolicy::class,
+        //'App\Model' => 'App\Policies\ModelPolicy',
     ];
 
     /**
@@ -28,8 +29,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        $gate->define('update_post', function(User $user,Post $post){
+        /*$gate->define('updatePost', function(User $user,Post $post){
             return $post->user_id == $user->id;
-        });
+        });*/
     }
 }
