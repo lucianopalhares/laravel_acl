@@ -14,7 +14,23 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <div class="row">
+                        <div class="col-md-12">
+                            @forelse($posts as $post)
+                                <h4>Title: {{$post->title}}</h4>
+
+                                <p>{{$post->description}}</p>
+
+                                <p><b>Autor: {{$post->user->name}}</b></p>
+
+                                <br>
+                                <a href="{{url('/post/'.$post->id.'/update')}}" class="btn btn-primary">Editar</a>
+                            @empty
+                                <button class="btn btn-danger" disabled="disabled">Sem dados</button>
+                            @endforelse
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
