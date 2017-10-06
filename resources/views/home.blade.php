@@ -14,7 +14,18 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <div class="row">
+                        <div class="col-md-12">
+                            @forelse($posts as $post)
+                                <p>Title: {{$post->title}}</p>
+                                <p>{{$post->description}}</p>
+                                <p>Autor: {{$post->user->name}}</p>
+                                <hr>
+                            @empty
+                                <p>No posts</p>
+                            @endforelse
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
