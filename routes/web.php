@@ -4,11 +4,13 @@ Route::group(['prefix'=>'painel'], function(){
 
 	Route::get('/', 'Painel\PainelController@index');
 
+	Route::get('/posts', 'Painel\PostController@index');
+
 });
 
 Auth::routes();
 
-Route::get('/', 'SiteController@index');
+Route::get('/', 'Painel\SiteController@index');
 /*
 
 

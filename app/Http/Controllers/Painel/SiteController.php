@@ -1,25 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Painel;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
 use Gate;
+use App\Http\Controllers\Controller;
 
 class SiteController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
